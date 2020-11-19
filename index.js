@@ -1,4 +1,7 @@
 const express = require("express");
+const cookieParser = require('cookie-parser')
+
+const csurf = require('csurf');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -11,7 +14,25 @@ app.get("/", (req, res) => {
 
 });
 
+app.get('/create', (req,res) => {
+  res.render('create-user', {  })
+})
 
+
+app.use(cookieParser())
+
+const csrfProtection = csurf({ cookie: true })
+
+// const form = [
+//   {
+// csrf:
+// firstName:
+// lastName:
+// email:
+// password:
+// confirmedPassword:
+//   }
+// ]
 
 
 const users = [
